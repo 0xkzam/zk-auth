@@ -1,0 +1,248 @@
+{
+  "AssetGating": {
+    "noir_version": "0.18.0+1de0e6d0acb18f3164a3b1fbc1be6438ef16be39",
+    "hash": 11327398978037084000,
+    "backend": "acvm-backend-barretenberg",
+    "abi": {
+      "parameters": [
+        {
+          "name": "required_balance",
+          "type": {
+            "kind": "integer",
+            "sign": "unsigned",
+            "width": 32
+          },
+          "visibility": "public"
+        },
+        {
+          "name": "issuer_public_key_x",
+          "type": {
+            "kind": "array",
+            "length": 32,
+            "type": {
+              "kind": "integer",
+              "sign": "unsigned",
+              "width": 8
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "name": "issuer_public_key_y",
+          "type": {
+            "kind": "array",
+            "length": 32,
+            "type": {
+              "kind": "integer",
+              "sign": "unsigned",
+              "width": 8
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "name": "subject_eth_address",
+          "type": {
+            "kind": "array",
+            "length": 20,
+            "type": {
+              "kind": "integer",
+              "sign": "unsigned",
+              "width": 8
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "name": "issuer_signed_message",
+          "type": {
+            "kind": "array",
+            "length": 64,
+            "type": {
+              "kind": "integer",
+              "sign": "unsigned",
+              "width": 8
+            }
+          },
+          "visibility": "private"
+        },
+        {
+          "name": "subject_balance",
+          "type": {
+            "kind": "integer",
+            "sign": "unsigned",
+            "width": 32
+          },
+          "visibility": "private"
+        }
+      ],
+      "param_witnesses": {
+        "issuer_public_key_x": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "issuer_public_key_y": [
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65
+        ],
+        "issuer_signed_message": [
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149
+        ],
+        "required_balance": [
+          1
+        ],
+        "subject_balance": [
+          150
+        ],
+        "subject_eth_address": [
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85
+        ]
+      },
+      "return_type": null,
+      "return_witnesses": []
+    },
+    "bytecode": "H4sIAAAAAAAA/83Y9XPTYADG8ZTh7i5juDeVrUWHu7tDoWO4uw13h21w/LHwvbRc7nuDH1i4I3e77NO1Wfqmzfs877cgCL4H0Zb6+dOlsq+NmZ+eMdfIXeVucne5h9xT7iX3lvvIfeV+cn95gDxQHiQPlofIQ+Vh8nB5hDxSHiWPlsfIY+Vx8nh5glwrT5Tr5EnyZHmKPFWeJk+XZ8gz5VnybHmOPFeeJ6flUM7IWTkn5+V6uUEuyEV5vrxAXigvkhfLS+RGeam8TF4ur5BXyqvk1fIaea28Tl4vb5A3ypvkzfIWeau8Td4u75B3yrvk3fIeea+8T94vH5APyofkw/IR+ahcko/Jx+Wy3CSfkJvlk/Ip+bR8Rj4rn5PPyxfki/Il+bJ8Rb4qX5Ovyzfkm/It+bZ8R74r35Pvyy3yA/mh/Eh+LD+Rn8rP5OfyC/ml/Ep+Lb+R38rv5PfyB/mj/En+LH+RW4Nojq2p2Fv1scbKPt25LUzFjpVN1+dy5YZMOcyGR9OZYqmQT+fypfpCWAjzhfzxTCGbLRdyhYZiqdiQLoa5bDlsyhezTZWDtXb+vMLqLx289cSOHR/Xtsq+PYiyaBC7Fmzk1brY81OxfSp2Tepir+noOanfHKdX7LHq6/vH/p7Um/81CPF/ntQx2yoD6eN29gPVltw5pqsXlQtdq7GtSXg8/tWXqrPH+prgeP5p/P7yPDOV8wzbEnzP7Qle1wTGr8Mb3P/8vVlaOQ7BlDBKACV0EjQJlwRKQiTBkbB4JIhCYSmIwh+Bj5BHsCPMNQdRaCOoEc4IZIQwghdhi4BFqCJIEZ4ITIQkghFhiABE6CHoEG4INIQYggthpSWIQglBhPBB4CBkECwIEwQIQgNBgXBAICAEMPEz2TPBM6kzkTN5M2EzSfM93Bm7XtxL+NwzQTBxsHBRXazgps5CBIsPLDiwyMBNncUEFhBYNGChgMUBFgRYBKD4U/Yp+JR6ijzlncJOSaeYU8Zrg6h0M5lQrinUlGiKM2V5ehCVYoow5ZfCS8ml2FJm+eAxCVBUKacUUkooxZOyScGkVFIkKY8URkoixZAy2BhEpW9ZEJU7Ch0ljuJGWVsTRKWMIkb5onBRsihWlCkKFKWJokQ52hEb1/j2Axz8SuJtEgAA"
+  }
+}

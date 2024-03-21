@@ -1,0 +1,7 @@
+[package]
+name = "AssetGating"
+type = "bin"
+authors = ["Cryptoineer"]
+compiler_version = "0.18noir.0"
+
+[dependencies]
