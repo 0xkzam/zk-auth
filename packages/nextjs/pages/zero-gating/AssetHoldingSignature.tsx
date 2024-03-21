@@ -69,7 +69,7 @@ export const BirthDateSignature = ({ aliceDefaultAge }: { aliceDefaultAge: numbe
           <strong>Alice</strong> and the <strong>Asset DAO</strong> need to agree on who to trust in order to
           certify Alice&apos; Membership. In this example the <strong>Asset Contract</strong> acts as a trusted third party, but in
           a different set-up the certifying entity could be completely different. The only requirement is that both
-          Alice & the DAO trust the signature (certification) provided by this third party.
+          Alice & the DAO trust the signature.
         </p>
         <p>
           The DAO has implemented the same claim format as the Asset Contract, this enables the proof verification
