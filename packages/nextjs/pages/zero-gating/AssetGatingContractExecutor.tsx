@@ -62,7 +62,7 @@ export const AgeRestrictedContractExecutor = () => {
             <BalloonCount count={data?.toString()} />
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Your proof of having the required birth year ✅</span>
+                <span className="label-text">Your proof of having the required asset holding ✅</span>
               </label>
               <input
                 type="text"
