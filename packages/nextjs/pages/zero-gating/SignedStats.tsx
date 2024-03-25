@@ -10,7 +10,7 @@ const SignedStats: NextPage = () => {
   return (
     <div className="stats stats-vertical sm:stats-horizontal shadow mb-8">
       {signerPublicKey && <Stat title="Signers public key 🏛" stat={signerPublicKey} />}
-      {signedBirthYear && <Stat title="Signed birth year 📜" stat={signedBirthYear} />}
+      {signedBirthYear && <Stat title="Signed asset holding 📜" stat={signedBirthYear} />}
       {proof && proof.length > 2 && <Stat title="Proof of valid age ✅" stat={proof} />}
     </div>
   );
