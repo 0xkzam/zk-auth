@@ -55,7 +55,7 @@ export const BirthDateSignature = ({ aliceDefaultAge }: { aliceDefaultAge: numbe
       });
       setSignedBirthYear(signedMessage);
       setSignerPublicKey(signerPublicKey);
-      notification.success("Successfully signed birth year");
+      notification.success("Successfully signed asset holdings data");
     } catch (e) {
       notification.error("Something went wrong");
     }
