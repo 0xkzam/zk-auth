@@ -111,7 +111,6 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
           proof-verifier. The <strong>DAO</strong> will use the proof as input to execute the verifier contract
           on-chain.
         </p>
-        
       </div>
       <div>
         <div className="card w-full shadow-2xl bg-base-300">
@@ -186,10 +185,6 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
             </div>
           </div>
         </div>
-        <p>
-          * Note that the &quot;signed age&quot; and &quot;ethereum address&quot;, must be the same as the ones you used
-          to generate the signed message.
-        </p>
       </div>
     </div>
   );
