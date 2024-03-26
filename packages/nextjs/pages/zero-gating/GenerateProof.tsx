@@ -92,25 +92,8 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
   return (
     <div className="grid grid-cols-2 gap-6 max-w-7xl">
       <div>
-        <h1 className="text-3xl font-bold">Step 2: Generating the proof ✅</h1>
-        <p>
-          In order for <strong>Alice</strong> to really know that she&apos;s not sharing any private information with
-          the <strong>DAO</strong> two things should be possible:
-          <ol>
-            <li>
-              1. The code that generates the the proof should be <strong>open source</strong> for Alice to review
-            </li>
-            <li>
-              2. The proof generation should happen in an environment trusted by<strong>Alice</strong> (ex: locally in
-              her laptop or phone)
-            </li>
-          </ol>
-        </p>
-        <p>
-          A circuit written in <strong>Noir</strong> is used for generating the proof and for generating a
-          proof-verifier. The <strong>DAO</strong> will use the proof as input to execute the verifier contract
-          on-chain.
-        </p>
+        <h1 className="text-3xl font-bold">Step 2</h1>
+        <h1 className="text-3xl font-bold">Generating the proof ✅</h1>
       </div>
       <div>
         <div className="card w-full shadow-2xl bg-base-300">
