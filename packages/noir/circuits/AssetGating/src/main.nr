@@ -9,22 +9,31 @@ fn u16_to_u8_2(input: u32) -> [u8; 2] {
     output
 }
 
-fn construct_claim_payload(subject_eth_address: [u8; 20], subject_balance: u32) -> [u8; 32] {
-    let mut packed_bytes: [u8; 22] = [0; 22];
-    for i in 0..20 {
-        packed_bytes[i] = subject_eth_address[i];
-    }
-    let balance_bytes = u16_to_u8_2(subject_balance);
-    packed_bytes[20] = balance_bytes[0];
-    packed_bytes[21] = balance_bytes[1];
-    let hash = std::hash::keccak256(packed_bytes, 22);
-    hash
+fn construct_claim_payload(user_address: [u8; 20], user_balance: u32) -> [u8; 32] {
+    let balance_bytes = u16_to_u8_2(user_balance);
+    let packed_bytes: [u8; 22] = [
+        user_address[0], user_address[1], user_address[2], user_address[3],
+        user_address[4], user_address[5], user_address[6], user_address[7],
+        user_address[8], user_address[9], user_address[10], user_address[11],
+        user_address[12], user_address[13], user_address[14], user_address[15],
+        user_address[16], user_address[17], user_address[18], user_address[19],
+        balance_bytes[0], balance_bytes[1],
+    ];
+    std::hash::keccak256(packed_bytes, 22)
 }
 
-fn main(required_balance: pub u32, issuer_public_key_x: pub [u8; 32], issuer_public_key_y: pub [u8; 32], subject_eth_address: pub [u8; 20], issuer_signed_message: [u8; 64], subject_balance: u32) {
-    assert(required_balance <= subject_balance, "Subject balance does not meet the required threshold.");
 
-    let claim_payload = construct_claim_payload(subject_eth_address, subject_balance);
+fn main(
+    required_balance: pub u32, 
+    issuer_public_key_x: pub [u8; 32], 
+    issuer_public_key_y: pub [u8; 32], 
+    user_address: pub [u8; 20], 
+    issuer_signed_message: [u8; 64], 
+    user_balance: u32) {
+
+    assert(required_balance <= user_balance, "Subject balance does not meet the required threshold.");
+
+    let claim_payload = construct_claim_payload(user_address, user_balance);
     let is_verified = std::ecdsa_secp256k1::verify_signature(
         issuer_public_key_x,
         issuer_public_key_y,
@@ -32,4 +41,41 @@ fn main(required_balance: pub u32, issuer_public_key_x: pub [u8; 32], issuer_pub
         claim_payload,
     );
     assert(is_verified, "Signature verification failed.");
+}
+
+
+#[test]
+fn test_u16_to_u8_2() {
+    let expected: [u8; 2] = [ 0x01, 0x00 ];
+    let actual: [u8; 2] = u16_to_u8_2(1);
+    assert(expected == actual);
+}
+
+
+#[test]
+fn test_construct_claim() {
+    let expected = [ 0x5a, 0xcf, 0x78, 0xe9, 0x1b, 0x88, 0xc3, 0x44, 0xe6, 0x5d, 0xed, 0xe6, 0xb0, 0x7d, 0x8a, 0xe5, 0x94, 0xdb, 0x81, 0xa2, 0x19, 0x2f, 0xad, 0x9b, 0x7d, 0x68, 0x37, 0xe4, 0x75, 0x98, 0x87, 0x3d ];
+    let eth_address = [ 0x0a, 0x66, 0xfb, 0x34, 0xd3, 0x0c, 0x2b, 0x88, 0x9a, 0x12, 0xb1, 0xf8, 0x15, 0x73, 0xe4, 0x7f, 0x37, 0xde, 0x34, 0x0e ];
+    let actual = construct_claim_payload(eth_address, 1);
+    assert(expected == actual);
+}
+
+#[test]
+fn test_main() {
+    let required_balance: u32 = 1;
+    let user_address: [u8; 20] = [ 0x0a, 0x66, 0xfb, 0x34, 0xd3, 0x0c, 0x2b, 0x88, 0x9a, 0x12, 0xb1, 0xf8, 0x15, 0x73, 0xe4, 0x7f, 0x37, 0xde, 0x34, 0x0e ];
+    let issuer_public_key_x: [u8; 32] = [ 0xba, 0x57, 0x34, 0xd8, 0xf7, 0x09, 0x17, 0x19, 0x47, 0x1e, 0x7f, 0x7e, 0xd6, 0xb9, 0xdf, 0x17, 0x0d, 0xc7, 0x0c, 0xc6, 0x61, 0xca, 0x05, 0xe6, 0x88, 0x60, 0x1a, 0xd9, 0x84, 0xf0, 0x68, 0xb0 ];
+    let issuer_public_key_y: [u8; 32] = [ 0xd6, 0x73, 0x51, 0xe5, 0xf0, 0x60, 0x73, 0x09, 0x24, 0x99, 0x33, 0x6a, 0xb0, 0x83, 0x9e, 0xf8, 0xa5, 0x21, 0xaf, 0xd3, 0x34, 0xe5, 0x38, 0x07, 0x20, 0x5f, 0xa2, 0xf0, 0x8e, 0xec, 0x74, 0xf4 ];
+    // TODO: test with signed message from issuer but with wrong birth year
+    let issuer_signed_message: [u8; 64] = [ 0x28, 0x38, 0x0e, 0x97, 0x4c, 0xc4, 0xc9, 0x15, 0x85, 0x80, 0xfd, 0x7b, 0x89, 0xc3, 0xf9, 0x0f, 0xb0, 0xed, 0x08, 0x28, 0x29, 0xf9, 0xa5, 0x24, 0xcd, 0x19, 0xff, 0xec, 0x11, 0xbd, 0xa8, 0x38, 0x77, 0xf8, 0x47, 0xf6, 0xd0, 0x50, 0xb9, 0x2b, 0xd5, 0x5d, 0xca, 0xba, 0x06, 0x40, 0x63, 0x94, 0xc4, 0xe0, 0x8f, 0xd4, 0x83, 0x8b, 0x24, 0xac, 0xb7, 0x1a, 0xd1, 0x2e, 0x3c, 0x8a, 0xbe, 0x1c ];
+    let user_balance: u32 = 2;
+
+    main(
+      required_balance,
+      issuer_public_key_x,
+      issuer_public_key_y,
+      user_address,
+      issuer_signed_message,
+      user_balance,
+    );
 }
