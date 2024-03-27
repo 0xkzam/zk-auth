@@ -27,13 +27,13 @@ fn main(
     required_balance: pub u32, 
     issuer_public_key_x: pub [u8; 32], 
     issuer_public_key_y: pub [u8; 32], 
-    user_address: pub [u8; 20], 
+    subject_eth_address: pub [u8; 20], 
     issuer_signed_message: [u8; 64], 
-    user_balance: u32) {
+    subject_balance: u32) {
 
-    assert(required_balance <= user_balance, "Subject balance does not meet the required threshold.");
+    assert(required_balance <= subject_balance, "Subject balance does not meet the required threshold.");
 
-    let claim_payload = construct_claim_payload(user_address, user_balance);
+    let claim_payload = construct_claim_payload(subject_eth_address, subject_balance);
     let is_verified = std::ecdsa_secp256k1::verify_signature(
         issuer_public_key_x,
         issuer_public_key_y,
