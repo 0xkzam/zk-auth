@@ -65,7 +65,7 @@ export const BirthDateSignature = ({ aliceDefaultAge }: { aliceDefaultAge: numbe
     <div className="grid grid-cols-2 gap-6 max-w-7xl">
       <div>
         <h1 className="text-3xl font-bold">Step 1</h1>
-        <h1 className="text-3xl font-bold">Sign the Asset Holding with the DAO&apos;s collection address</h1>
+        <h1 className="text-3xl font-bold">Sign your Asset Holdings</h1>
       </div>
       <div>
         <div className="card w-full shadow-2xl bg-base-300">

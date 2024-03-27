@@ -101,7 +101,7 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-8">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">*Signed Asset Holding</span>
+                  <span className="label-text">*Signed Asset Amount</span>
                 </label>
                 <input
                   type="number"
@@ -113,7 +113,7 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Required Quantity</span>
+                  <span className="label-text">*Minimum Required Quantity</span>
                 </label>
                 <input
                   type="number"
@@ -127,7 +127,7 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-8">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Asset Holding 📜</span>
+                  <span className="label-text">Singed Asset Holding 📜</span>
                 </label>
                 <input
                   type="text"
@@ -139,11 +139,11 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Public key of signer 🏛</span>
+                  <span className="label-text">Signer&lsquo;s public key 🏛</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Public key of signer"
+                  placeholder="Signer's public key"
                   className="input input-bordered"
                   value={form.proofOfBirthYearPublicKey}
                   onChange={e => setForm({ ...form, proofOfBirthYearPublicKey: e.target.value })}
@@ -152,7 +152,7 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">*Ethereum address signature</span>
+                <span className="label-text">*Signed User address</span>
               </label>
               <AddressInput
                 value={ethereumAddress}
