@@ -8,7 +8,7 @@ import type { NextPage } from "next";
 
 const TEN_YEARS = 1000 * 60 * 60 * 24 * 365 * 10;
 const YEAR_TEN_YEARS_AGO = new Date(Date.now() - TEN_YEARS).getFullYear();
-const GATING_QUANTITY = 1;
+const GATING_QUANTITY = 10;
 
 const INTRO_STEP = 0;
 const LAST_STEP = 3;
@@ -18,7 +18,7 @@ export function renderZkSteps(currentStep: number, setCurrentStep: Dispatch<SetS
     case 0:
       return <ZkStepsIntro setCurrentStep={setCurrentStep} yearTenYearsAgo={YEAR_TEN_YEARS_AGO} />;
     case 1:
-      return <BirthDateSignature aliceDefaultAge={GATING_QUANTITY +1} />;
+      return <BirthDateSignature aliceDefaultAge={GATING_QUANTITY + 1} />;
     case 2:
       return <GenerateProof requiredQuantity={GATING_QUANTITY} />;
     case 3:
@@ -43,9 +43,9 @@ const ZkSteps: NextPage = () => {
       {isNotIntroStep && (
         <>
           <ul className="steps pt-12 steps-vertical md:steps-horizontal">
-            <li className="step step-primary">Third party signature 🏛📜</li>
+            <li className="step step-primary">Sign 🏛📜</li>
             <li className={`step ${step2ClassName}`}>Generate proof ✅</li>
-            <li className={`step ${step3ClassName}`}>Call contract 🎈</li>
+            <li className={`step ${step3ClassName}`}>Verify 🎈</li>
           </ul>
           <div className="join grid grid-cols-2 mt-8 gap-8">
             <>

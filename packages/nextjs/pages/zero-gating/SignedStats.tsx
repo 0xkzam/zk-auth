@@ -9,9 +9,9 @@ const SignedStats: NextPage = () => {
 
   return (
     <div className="stats stats-vertical sm:stats-horizontal shadow mb-8">
-      {signerPublicKey && <Stat title="Signers public key 🏛" stat={signerPublicKey} />}
+      {signerPublicKey && <Stat title="Signer's public key 🏛" stat={signerPublicKey} />}
       {signedBirthYear && <Stat title="Signed asset holding 📜" stat={signedBirthYear} />}
-      {proof && proof.length > 2 && <Stat title="Proof of valid age ✅" stat={proof} />}
+      {proof && proof.length > 2 && <Stat title="Proof of valid token amount ✅" stat={proof} />}
     </div>
   );
 };

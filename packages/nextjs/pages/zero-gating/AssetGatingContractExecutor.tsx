@@ -4,7 +4,6 @@ import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaf
 import { useAssetGatingProof } from "~~/services/store/asset-gating-proof";
 import { notification } from "~~/utils/scaffold-eth";
 
-
 export const BalloonCount = (props: { count: string | undefined }) => {
   if (props.count) {
     return <p>Asset count: {props.count}</p>;
@@ -39,22 +38,14 @@ export const AgeRestrictedContractExecutor = () => {
   });
 
   const handleSubmission = async () => {
-    
-      notification.success("Successfully Verified the proof");
-    
+    notification.success("Successfully Verified the proof");
   };
 
   return (
     <div className="grid grid-cols-2 gap-6 max-w-7xl">
       <div>
-        <h1 className="text-3xl font-bold">Step 3: Getting the Membership 🎈</h1>
-        <p>
-          The public inputs is part of the information that was used to generate the proof. They are needed to show
-          what we are actually proving.
-        </p>
-        <p>
-          Now that <strong>Alice</strong> has received a Membership <strong>token</strong>, she can vote anaomalyally.
-        </p>
+        <h1 className="text-3xl font-bold">Step 3 </h1>
+        <h1 className="text-3xl font-bold">Get the Membership 🎈 </h1>
       </div>
       <div>
         <div className="card w-full shadow-2xl bg-base-300">
