@@ -2,9 +2,6 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    esmExternals: 'loose',
-  },
   async headers() {
     return [
       {
