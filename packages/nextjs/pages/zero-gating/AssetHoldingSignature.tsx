@@ -93,7 +93,7 @@ export const BirthDateSignature = ({ aliceDefaultAge }: { aliceDefaultAge: numbe
                 onChange={e => setAssetQuantity(e.target.value)}
               />
             </div>
-            <div className="form-control">
+            {/* <div className="form-control">
               <label className="label">
                 <span className="label-text">Asset Collection &apos;s 🏛 address signing</span>
               </label>
@@ -104,7 +104,7 @@ export const BirthDateSignature = ({ aliceDefaultAge }: { aliceDefaultAge: numbe
                 className="input input-bordered"
                 onChange={e => setForm({ ...form, AssetAddress: e.target.value })}
               />
-            </div>
+            </div> */}
             <div className="form-control">
               <button className="btn btn-primary mt-6" onClick={handleSubmission}>
                 Sign Asset Holding 📜
