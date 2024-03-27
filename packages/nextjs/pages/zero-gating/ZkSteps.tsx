@@ -8,7 +8,7 @@ import type { NextPage } from "next";
 
 const TEN_YEARS = 1000 * 60 * 60 * 24 * 365 * 10;
 const YEAR_TEN_YEARS_AGO = new Date(Date.now() - TEN_YEARS).getFullYear();
-const GATING_QUANTITY = 1;
+const GATING_QUANTITY = 10;
 
 const INTRO_STEP = 0;
 const LAST_STEP = 3;
