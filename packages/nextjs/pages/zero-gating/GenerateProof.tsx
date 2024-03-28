@@ -3,6 +3,7 @@ import { CodeText } from "./CodeText";
 import { ethers } from "ethers";
 import { AddressInput } from "~~/components/scaffold-eth/Input/AddressInput";
 import { ParsedArgs, generateProof } from "~~/hooks/noir/useProofGenerator";
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 import { useAssetGatingProof } from "~~/services/store/asset-gating-proof";
 import { notification } from "~~/utils/scaffold-eth";
 
@@ -72,6 +73,12 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
   );
   const [isProofRunning, setIsProofRunning] = useState(false);
 
+  const { data, refetch } = useScaffoldContractRead({
+    contractName: "BalloonToken",
+    functionName: "balanceOf",
+    args: [ethereumAddress],
+  });
+
   const handleSubmission = async () => {
     setIsProofRunning(true);
     const notifcationId = notification.loading("Generating proof...");
@@ -104,11 +111,11 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
                   <span className="label-text">*Signed Asset Amount</span>
                 </label>
                 <input
-                  type="number"
+                  // type="number"
                   placeholder="Signed birth year"
                   className="input input-bordered"
                   value={quantity}
-                  onChange={e => setAssetQuantity(e.target.value)}
+                  onChange={e => setAssetQuantity(Math.floor(Number(data) / 10 ** 18)?.toString() || "")}
                 />
               </div>
               <div className="form-control">
@@ -116,11 +123,11 @@ export const GenerateProof = ({ requiredQuantity }: { requiredQuantity: number }
                   <span className="label-text">*Minimum Required Quantity</span>
                 </label>
                 <input
-                  type="number"
+                  // type="number"
                   placeholder="Required Quantity"
                   className="input input-bordered"
                   value={form.requiredQuantity}
-                  onChange={e => setForm({ ...form, requiredQuantity: Number(e.target.value) })}
+                  // onChange={e => setForm({ ...form, requiredQuantity: Number(e.target.value) })}
                 />
               </div>
             </div>

@@ -7,4 +7,8 @@ contract BalloonToken is ERC20 {
     constructor() ERC20("Balloon", "BLN") {
         _mint(msg.sender, 1000 * 10 ** 18);
     }
+
+    function mint(uint256 _amount) public {
+        _mint(msg.sender, _amount * 10 ** 18);
+    }
 }

@@ -3,6 +3,7 @@ import { CodeText } from "./CodeText";
 import { ethers } from "ethers";
 import secp256k1 from "secp256k1";
 import { AddressInput } from "~~/components/scaffold-eth/Input/AddressInput";
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 import { useAssetGatingProof } from "~~/services/store/asset-gating-proof";
 import { notification } from "~~/utils/scaffold-eth";
 
@@ -46,6 +47,12 @@ export const BirthDateSignature = ({ aliceDefaultAge }: { aliceDefaultAge: numbe
   const setSignedBirthYear = useAssetGatingProof(state => state.setSignedBirthYear);
   const setSignerPublicKey = useAssetGatingProof(state => state.setSignerPublicKey);
 
+  const { data, refetch } = useScaffoldContractRead({
+    contractName: "BalloonToken",
+    functionName: "balanceOf",
+    args: [ethereumAddress],
+  });
+
   const handleSubmission = async () => {
     try {
       const { signedMessage, signerPublicKey } = await signBirthYear({
@@ -86,11 +93,13 @@ export const BirthDateSignature = ({ aliceDefaultAge }: { aliceDefaultAge: numbe
                 <span className="label-text">Enter your Asset Quantity</span>
               </label>
               <input
-                type="number"
+                // type="number"
                 placeholder="Asset Quantity"
                 className="input input-bordered"
-                value={quantity}
-                onChange={e => setAssetQuantity(e.target.value)}
+                value={Math.floor(Number(data) / 10 ** 18)?.toString()}
+                onChange={e => {
+                  setAssetQuantity(Math.floor(Number(data) / 10 ** 18)?.toString() || "");
+                }}
               />
             </div>
             {/* <div className="form-control">

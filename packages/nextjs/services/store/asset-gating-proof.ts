@@ -16,7 +16,7 @@ type AssetGatingProof = {
 
 export const useAssetGatingProof = create<AssetGatingProof>(set => ({
   ethereumAddress: "",
-  quantity: 1,
+  quantity: 0,
   signedBirthYear: "",
   signerPublicKey: "",
   proof: "0x",
