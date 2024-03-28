@@ -1,4 +1,4 @@
-required_balance = 1
+required_balance = 10
 subject_eth_address = [
 0x70,
 0x99,
@@ -155,4 +155,4 @@ issuer_signed_message = [
 0x10,
 0x1b
 ]
-subject_balance = 2
+subject_balance = 11
